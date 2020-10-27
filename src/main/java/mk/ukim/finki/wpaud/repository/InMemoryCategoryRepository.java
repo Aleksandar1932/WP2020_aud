@@ -4,7 +4,6 @@ import mk.ukim.finki.wpaud.bootstrap.DataHolder;
 import mk.ukim.finki.wpaud.model.Category;
 import org.springframework.stereotype.Repository;
 
-import javax.xml.crypto.Data;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
