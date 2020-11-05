@@ -1,4 +1,4 @@
-package mk.ukim.finki.wpaud.web.servlets;
+package mk.ukim.finki.wpaud.web.servlet;
 
 import mk.ukim.finki.wpaud.model.User;
 import mk.ukim.finki.wpaud.model.exceptions.InvalidUserCredentialsException;
@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "login-servlet", urlPatterns = "/login")
+@WebServlet(name = "login-servlet", urlPatterns = "/servlet/login")
 public class LoginServlet extends HttpServlet {
 
     private final SpringTemplateEngine springTemplateEngine;

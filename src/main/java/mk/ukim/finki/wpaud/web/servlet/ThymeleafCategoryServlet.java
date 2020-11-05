@@ -1,4 +1,4 @@
-package mk.ukim.finki.wpaud.web.servlets;
+package mk.ukim.finki.wpaud.web.servlet;
 
 import mk.ukim.finki.wpaud.service.CategoryService;
 import org.thymeleaf.context.WebContext;
