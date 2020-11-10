@@ -18,6 +18,11 @@ public class ManufacturerServiceImpl implements ManufacturerService {
     }
 
     @Override
+    public Boolean deleteById(Long id) {
+        return this.manufacturerRepository.deleteById(id);
+    }
+
+    @Override
     public List<Manufacturer> findAll() {
         return this.manufacturerRepository.findAll();
     }
@@ -25,5 +30,10 @@ public class ManufacturerServiceImpl implements ManufacturerService {
     @Override
     public Optional<Manufacturer> findById(Long id) {
         return this.manufacturerRepository.findById(id);
+    }
+
+    @Override
+    public Optional<Manufacturer> save(String name, String address) {
+        return this.manufacturerRepository.save(name, address);
     }
 }

@@ -21,4 +21,14 @@ public class InMemoryManufacturerRepository {
                 .filter(manufacturer -> manufacturer.getId().equals(id))
                 .findFirst();
     }
+
+    public Optional<Manufacturer> save(String name, String address) {
+        Manufacturer manufacturer = new Manufacturer(name, address);
+        DataHolder.manufacturers.add(manufacturer);
+        return Optional.of(manufacturer);
+    }
+
+    public Boolean deleteById(Long id) {
+        return DataHolder.manufacturers.removeIf(manufacturer -> manufacturer.getId().equals(id));
+    }
 }

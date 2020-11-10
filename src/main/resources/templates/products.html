@@ -44,7 +44,12 @@
                         </button>
                     </div>
                 </div>
-                <a class="btn btn-primary btn-sm ml-3" href="/logout">
+
+                <a class="btn btn-success btn-sm ml-3" href="/shopping-cart">
+                    <i class="fa fa-shopping-cart"></i> Cart
+                </a>
+
+                <a class="btn btn-light btn-sm ml-3" href="/logout">
                     <i class="fa fa-shopping-cart"></i> Logout
                 </a>
             </form>
@@ -88,7 +93,15 @@
 
 
                             <a class="btn btn-sm btn-primary"
-                               th:href="@{'/products/edit-form/{id}' (id=${product.getId()})}"> <i class="fa fa-trash">Edit</i></a>
+                               th:href="@{'/products/edit-form/{id}' (id=${product.getId()})}"> <i class="fa fa-trash">Edit</i>
+                            </a>
+
+                            <form th:method="post" th:action="@{/shopping-cart/add-product/{id} (id=${product.getId()})}">
+                                <button type="submit" class="btn btn-sm btn-info">
+                                    <i class="fa fa-trash">Add to cart</i>
+                                </button>
+                            </form>
+
 
                         </td>
 
