@@ -11,5 +11,4 @@ public class WpAudApplication {
     public static void main(String[] args) {
         SpringApplication.run(WpAudApplication.class, args);
     }
-
 }

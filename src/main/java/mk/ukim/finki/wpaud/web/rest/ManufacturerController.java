@@ -2,7 +2,6 @@ package mk.ukim.finki.wpaud.web.rest;
 
 import mk.ukim.finki.wpaud.model.Manufacturer;
 import mk.ukim.finki.wpaud.service.ManufacturerService;
-import org.apache.coyote.Response;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
