@@ -1,10 +1,7 @@
 package mk.ukim.finki.wpaud.service;
 
-import mk.ukim.finki.wpaud.model.Category;
-import mk.ukim.finki.wpaud.model.Manufacturer;
 import mk.ukim.finki.wpaud.model.Product;
 
-import javax.swing.text.html.Option;
 import java.util.List;
 import java.util.Optional;
 

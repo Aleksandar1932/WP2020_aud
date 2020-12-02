@@ -11,7 +11,6 @@ import java.util.List;
 @Table(name = "shop_users")
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String username;
 
     private String password;
@@ -30,5 +29,8 @@ public class User {
         this.password = password;
         this.name = name;
         this.surname = surname;
+    }
+
+    public User() {
     }
 }

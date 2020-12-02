@@ -1,4 +1,4 @@
-package mk.ukim.finki.wpaud.repository;
+package mk.ukim.finki.wpaud.repository.impl;
 
 import mk.ukim.finki.wpaud.bootstrap.DataHolder;
 import mk.ukim.finki.wpaud.model.Manufacturer;

@@ -2,14 +2,13 @@ package mk.ukim.finki.wpaud.model;
 
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Data
 @Entity
 public class Category {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     private String name;
@@ -19,7 +18,6 @@ public class Category {
 
 
     public Category(String name, String description) {
-        this.id = (long) (Math.random() * 1000);
         this.name = name;
         this.description = description;
     }
