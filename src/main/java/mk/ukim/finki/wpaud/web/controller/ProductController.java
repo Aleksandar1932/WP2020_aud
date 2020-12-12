@@ -34,8 +34,8 @@ public class ProductController {
 
         List<Product> productList = this.productService.findAll();
         model.addAttribute("products", productList);
-
-        return "products";
+        model.addAttribute("bodyContent", "products");
+        return "master-template";
     }
 
 
@@ -52,8 +52,9 @@ public class ProductController {
 
         model.addAttribute("categories", categories);
         model.addAttribute("manufacturers", manufacturers);
+        model.addAttribute("bodyContent", "add-product");
 
-        return "add-product";
+        return "master-template";
     }
 
     @GetMapping("/edit-form/{id}")
@@ -68,8 +69,9 @@ public class ProductController {
             model.addAttribute("categories", categories);
             model.addAttribute("manufacturers", manufacturers);
             model.addAttribute("product", product);
+            model.addAttribute("bodyContent", "add-product");
 
-            return "add-product";
+            return "master-template";
         }
 
         return "redirect:/products?error=ProductNotFound";
