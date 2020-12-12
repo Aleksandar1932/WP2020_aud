@@ -6,6 +6,7 @@ import mk.ukim.finki.wpaud.model.Product;
 import mk.ukim.finki.wpaud.service.CategoryService;
 import mk.ukim.finki.wpaud.service.ManufacturerService;
 import mk.ukim.finki.wpaud.service.ProductService;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -46,6 +47,7 @@ public class ProductController {
     }
 
     @GetMapping("/add-form")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public String addProductPage(Model model) {
         List<Category> categories = this.categoryService.listCategories();
         List<Manufacturer> manufacturers = this.manufacturerService.findAll();
@@ -58,6 +60,7 @@ public class ProductController {
     }
 
     @GetMapping("/edit-form/{id}")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public String editProductPage(@PathVariable Long id, Model model) {
 
         if (this.productService.findById(id).isPresent()) {
@@ -78,6 +81,7 @@ public class ProductController {
     }
 
     @PostMapping("/add")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public String saveProduct(
             @RequestParam String name,
             @RequestParam Double price,

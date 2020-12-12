@@ -16,6 +16,7 @@
                             <th scope="col">Price</th>
                             <th scope="col">Manufacturer</th>
                             <th scope="col">Category</th>
+                            <th scope="col">Actions</th>
 
                         </tr>
                         </thead>
@@ -28,17 +29,22 @@
                             <td th:text="${product.getCategory()} != null ? ${product.getCategory().getName()}: 'No Category'"></td>
 
                             <td class="text-right">
-                                <form th:method="delete" th:action="@{/products/delete/{id} (id=${product.getId()})}">
-                                    <button type="submit" class="btn btn-sm btn-danger">
-                                        <i class="fa fa-trash">Delete</i>
-                                    </button>
-                                </form>
 
+                                <th:block sec:authorize="hasRole('ROLE_ADMIN')">
+                                    <form th:method="delete"
+                                          th:action="@{/products/delete/{id} (id=${product.getId()})}">
+                                        <button type="submit" class="btn btn-sm btn-danger">
+                                            <i class="fa fa-trash">Delete</i>
+                                        </button>
+                                    </form>
+                                </th:block>
 
-                                <a class="btn btn-sm btn-primary"
-                                   th:href="@{'/products/edit-form/{id}' (id=${product.getId()})}"> <i
-                                        class="fa fa-trash">Edit</i>
-                                </a>
+                                <th:block sec:authorize="hasRole('ROLE_ADMIN')">
+                                    <a class="btn btn-sm btn-primary"
+                                       th:href="@{'/products/edit-form/{id}' (id=${product.getId()})}"> <i
+                                            class="fa fa-trash">Edit</i>
+                                    </a>
+                                </th:block>
 
                                 <form th:method="post"
                                       th:action="@{/shopping-cart/add-product/{id} (id=${product.getId()})}">
@@ -55,13 +61,18 @@
                     </table>
                 </div>
             </div>
-            <div class="col mb-3">
-                <div class="row">
-                    <div class="col-sm 12 col-md-12">
-                        <a href="/products/add-form" class="btn btn-block btn-dark">Add new product</a>
+
+            <th:block sec:authorize="hasRole('ROLE_ADMIN')">
+                <div class="col mb-3">
+                    <div class="row">
+                        <div class="col-sm 12 col-md-12">
+                            <a href="/products/add-form" class="btn btn-block btn-dark">Add new product</a>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </th:block>
+
+
         </div>
     </div>
 
