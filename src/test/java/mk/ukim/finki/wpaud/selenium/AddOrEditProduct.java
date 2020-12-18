@@ -1,0 +1,53 @@
+package mk.ukim.finki.wpaud.selenium;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.PageFactory;
+
+public class AddOrEditProduct extends AbstractPage {
+
+    private WebElement name;
+    private WebElement price;
+    private WebElement quantity;
+    private WebElement categoryId;
+    private WebElement manufacturerId;
+    private WebElement submit;
+
+    public AddOrEditProduct(WebDriver driver) {
+        super(driver);
+    }
+
+    public static ProductsPage addProduct(WebDriver driver, String name, String price, String quantity, String category, String manufacturer) {
+        get(driver, "/products/add-form");
+        AddOrEditProduct addOrEditProduct = PageFactory.initElements(driver, AddOrEditProduct.class);
+        addOrEditProduct.name.sendKeys(name);
+        addOrEditProduct.price.sendKeys(price);
+        addOrEditProduct.quantity.sendKeys(quantity);
+        addOrEditProduct.categoryId.click();
+        addOrEditProduct.categoryId.findElement(By.xpath("//option[. = '" + category + "']")).click();
+        addOrEditProduct.manufacturerId.click();
+        addOrEditProduct.manufacturerId.findElement(By.xpath("//option[. = '" + manufacturer + "']")).click();
+
+        addOrEditProduct.submit.click();
+        return PageFactory.initElements(driver, ProductsPage.class);
+    }
+
+    public static ProductsPage editProduct(WebDriver driver, WebElement editButton, String name, String price, String quantity, String category, String manufacturer) {
+        editButton.click();
+        System.out.println(driver.getCurrentUrl());
+        AddOrEditProduct addOrEditProduct = PageFactory.initElements(driver, AddOrEditProduct.class);
+        addOrEditProduct.name.sendKeys(name);
+        addOrEditProduct.price.sendKeys(price);
+        addOrEditProduct.quantity.sendKeys(quantity);
+        addOrEditProduct.categoryId.click();
+        addOrEditProduct.categoryId.findElement(By.xpath("//option[. = '" + category + "']")).click();
+        addOrEditProduct.manufacturerId.click();
+        addOrEditProduct.manufacturerId.findElement(By.xpath("//option[. = '" + manufacturer + "']")).click();
+
+        addOrEditProduct.submit.click();
+        return PageFactory.initElements(driver, ProductsPage.class);
+    }
+
+
+}

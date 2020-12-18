@@ -22,7 +22,7 @@
                         </thead>
 
                         <tbody>
-                        <tr th:each="product : ${products}">
+                        <tr th:each="product : ${products}" class="product">
                             <td th:text="${product.getName()}"></td>
                             <td th:text="${product.getPrice()}"></td>
                             <td th:text="${product.getManufacturer()} != null ? ${product.getManufacturer().getName()}: 'No Manufacturer'"></td>
@@ -33,14 +33,14 @@
                                 <th:block sec:authorize="hasRole('ROLE_ADMIN')">
                                     <form th:method="delete"
                                           th:action="@{/products/delete/{id} (id=${product.getId()})}">
-                                        <button type="submit" class="btn btn-sm btn-danger">
+                                        <button type="submit" class="btn btn-sm btn-danger delete-product">
                                             <i class="fa fa-trash">Delete</i>
                                         </button>
                                     </form>
                                 </th:block>
 
                                 <th:block sec:authorize="hasRole('ROLE_ADMIN')">
-                                    <a class="btn btn-sm btn-primary"
+                                    <a class="btn btn-sm btn-primary edit-product"
                                        th:href="@{'/products/edit-form/{id}' (id=${product.getId()})}"> <i
                                             class="fa fa-trash">Edit</i>
                                     </a>
@@ -49,7 +49,7 @@
                                 <form th:method="post"
                                       th:action="@{/shopping-cart/add-product/{id} (id=${product.getId()})}"
                                       sec:authorize="isAuthenticated()">
-                                    <button type="submit" class="btn btn-sm btn-info">
+                                    <button type="submit" class="btn btn-sm btn-info cart-product">
                                         <i class="fa fa-trash">Add to cart</i>
                                     </button>
                                 </form>
@@ -67,7 +67,7 @@
                 <div class="col mb-3">
                     <div class="row">
                         <div class="col-sm 12 col-md-12">
-                            <a href="/products/add-form" class="btn btn-block btn-dark">Add new product</a>
+                            <a href="/products/add-form" class="btn btn-block btn-dark add-product-btn">Add new product</a>
                         </div>
                     </div>
                 </div>

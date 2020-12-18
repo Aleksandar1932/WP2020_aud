@@ -83,14 +83,18 @@ public class ProductController {
     @PostMapping("/add")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     public String saveProduct(
+            @RequestParam(required = false) Long id,
             @RequestParam String name,
             @RequestParam Double price,
             @RequestParam Integer quantity,
             @RequestParam Long categoryId,
             @RequestParam Long manufacturerId
     ) {
-        this.productService.save(name, price, quantity, categoryId, manufacturerId);
-
+        if (id != null) {
+            this.productService.edit(id, name, price, quantity, categoryId, manufacturerId);
+        } else {
+            this.productService.save(name, price, quantity, categoryId, manufacturerId);
+        }
         return "redirect:/products";
     }
 
