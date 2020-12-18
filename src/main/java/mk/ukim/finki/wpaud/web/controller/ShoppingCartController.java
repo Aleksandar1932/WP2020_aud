@@ -3,6 +3,7 @@ package mk.ukim.finki.wpaud.web.controller;
 import mk.ukim.finki.wpaud.model.ShoppingCart;
 import mk.ukim.finki.wpaud.model.User;
 import mk.ukim.finki.wpaud.service.ShoppingCartService;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -36,11 +37,10 @@ public class ShoppingCartController {
     }
 
     @PostMapping("/add-product/{id}")
-    public String addProductToShoppingCart(@PathVariable Long id, HttpServletRequest req) {
+    public String addProductToShoppingCart(@PathVariable Long id, HttpServletRequest req, Authentication authentication) {
         try {
-            String username = req.getRemoteUser();
-            ShoppingCart shoppingCart = this.shoppingCartService.addProductToShoppingCart(username, id);
-
+            User user = (User) authentication.getPrincipal();
+            this.shoppingCartService.addProductToShoppingCart(user.getUsername(), id);
             return "redirect:/shopping-cart";
         } catch (RuntimeException exception) {
             return "redirect:/shopping-cart?error=" + exception.getMessage();
