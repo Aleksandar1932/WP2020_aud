@@ -16,7 +16,7 @@
                             <th scope="col">Price</th>
                             <th scope="col">Manufacturer</th>
                             <th scope="col">Category</th>
-                            <th scope="col">Actions</th>
+                            <th scope="col" sec:authorize="isAuthenticated()">Actions</th>
 
                         </tr>
                         </thead>
@@ -47,7 +47,8 @@
                                 </th:block>
 
                                 <form th:method="post"
-                                      th:action="@{/shopping-cart/add-product/{id} (id=${product.getId()})}">
+                                      th:action="@{/shopping-cart/add-product/{id} (id=${product.getId()})}"
+                                      sec:authorize="isAuthenticated()">
                                     <button type="submit" class="btn btn-sm btn-info">
                                         <i class="fa fa-trash">Add to cart</i>
                                     </button>
